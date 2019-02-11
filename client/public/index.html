@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="apple-mobile-web-app-title" content="FXT ticker">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="white">
+		<link rel="icon" href="<%= BASE_URL %>favicon.ico">
+		<title>FXT ticker</title>
+
+		<!-- <link rel="apple-touch-icon" href="/images/FXTWhiteBackground.png"> -->
+		<link rel="stylesheet" type="text/css" href="<%= BASE_URL %>libs/semantic/dist/semantic.min.css">
+		<style>
+			[v-cloak] {
+				display: none
+			}
+
+			html, body {
+				height: 100%;
+				/*margin: 2px;*/
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<noscript>
+			<strong>We're sorry but it doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+		</noscript>
+
+		<div id='app' v-cloak></div>
+
+		<script src="<%= BASE_URL %>libs/jquery.min.js"></script>
+		<script src="<%= BASE_URL %>libs/semantic/dist/semantic.min.js"></script>
+	</body>
+</html>

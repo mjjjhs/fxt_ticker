@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="apple-mobile-web-app-title" content="FXT ticker">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="white">
+
+		<title>FXT Holders</title>
+
+		<link rel="apple-touch-icon" href="/images/FXTWhiteBackground.png">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css" />
+		<link rel="stylesheet" type="text/css" href="./style.css">
+	</head>
+
+	<body>
+		<div id='app' v-cloak>
+			<div v-if='holders.length == 0' class="ui indeterminate active centered text loader">loading...</div>
+
+			<table class="ui unstackable small very compact table">
+				<thead>
+					<tr>
+						<th class='right aligned'>Rank</th>
+						<th class='center aligned'>Address</th>
+						<th class='center aligned'>Alias</th>
+						<th class='right aligned'>Quantity</th>
+						<th class='right aligned'>Percentage</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for='(holder, index) in holders' :key='holder.address'>
+						<td class='right aligned'>{{holder.rank}}</td>
+						<td><a :href="`http://etherscan.io/address/${holder.address[0]}`" target="_blank">{{holder.address[0]}}</a></td>
+						<td><span v-if="holder.address[1] != undefined && holder.address[1].startsWith('[추정]')" class='ui yellow tiny label'>추정</span> {{holder.address[1] == undefined ? '' : holder.address[1] | foo}}</td>
+						<td class='right aligned'><b>{{holder.quantity | digit(0)}}</b></td>
+						<td class='right aligned'>{{holder.percentage | digit(4)}} %</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+
+		<script src='./main.js'></script>
+	</body>
+</html>
